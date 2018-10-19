@@ -1,28 +1,25 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, withRouter } from 'react-router-dom';
+import LogIn from './components/Login';
+import Jokes from './components/Jokes';
+import Register from './components/Register';
+import styled from 'styled-components';
+
+const AppDiv = styled.div`
+  width: 100%;
+  margin: auto;
+`;
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <AppDiv>
+        <Route exact path="/" component={LogIn} />
+        <Route path="/signup" component={Register} />
+        <Route path="/jokes" component={Jokes} />
+      </AppDiv>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

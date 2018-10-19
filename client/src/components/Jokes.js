@@ -1,5 +1,31 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const LogoutButton = styled.div`
+  position: absolute;
+  right: 30px;
+  top: 15px;
+`;
+
+const JokesDiv = styled.div`
+  max-width: 1000px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`;
+
+const NameCard = styled.div`
+  border: 1px solid gray;
+  height: 200px;
+  width: 300px;
+  margin-top: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+`;
+
 class Jokes extends Component {
   state = {
     jokes: []
@@ -30,20 +56,20 @@ class Jokes extends Component {
   render() {
     return (
       <div>
-        <div className="logout-button">
+        <LogoutButton>
           {localStorage.getItem('token') && (
             <button onClick={this.logoutHandler}>Logout</button>
           )}
-        </div>
-        <div className="Jokes">
+        </LogoutButton>
+        <JokesDiv>
           {this.state.jokes.map((joke, index) => (
-            <div className="name-card" key={index}>
+            <NameCard key={index}>
               <p>type: {joke.type}</p>
               <p>setup: {joke.setup}</p>
               <p>punchline: {joke.punchline}</p>
-            </div>
+            </NameCard>
           ))}
-        </div>
+        </JokesDiv>
       </div>
     );
   }
