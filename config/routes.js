@@ -10,8 +10,6 @@ module.exports = server => {
   server.get('/api/jokes', authenticate, getJokes);
 };
 
-// const token = generateToken(user);
-
 function register(req, res) {
   const creds = req.body;
   const hash = bcrypt.hashSync(creds.password, 12);
